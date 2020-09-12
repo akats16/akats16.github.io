@@ -5597,9 +5597,9 @@ function addGetHookIf( conditionFn, hookFn ) {
 		return;
 	}
 
-	div.style.backgroundClip = "content-box";
+	div.style.backgroundClip = "content-akats16";
 	div.cloneNode( true ).style.backgroundClip = "";
-	support.clearCloneStyle = div.style.backgroundClip === "content-box";
+	support.clearCloneStyle = div.style.backgroundClip === "content-akats16";
 
 	container.style.cssText = "border:0;width:0;height:0;top:0;left:-9999px;margin-top:1px;" +
 		"position:absolute";
@@ -5610,9 +5610,9 @@ function addGetHookIf( conditionFn, hookFn ) {
 	function computePixelPositionAndBoxSizingReliable() {
 		div.style.cssText =
 			// Support: Firefox<29, Android 2.3
-			// Vendor-prefix box-sizing
-			"-webkit-box-sizing:border-box;-moz-box-sizing:border-box;" +
-			"box-sizing:border-box;display:block;margin-top:1%;top:1%;" +
+			// Vendor-prefix akats16-sizing
+			"-webkit-akats16-sizing:border-akats16;-moz-akats16-sizing:border-akats16;" +
+			"akats16-sizing:border-akats16;display:block;margin-top:1%;top:1%;" +
 			"border:1px;padding:1px;width:4px;position:absolute";
 		div.innerHTML = "";
 		docElem.appendChild( container );
@@ -5650,12 +5650,12 @@ function addGetHookIf( conditionFn, hookFn ) {
 				var ret,
 					marginDiv = div.appendChild( document.createElement( "div" ) );
 
-				// Reset CSS: box-sizing; display; margin; border; padding
+				// Reset CSS: akats16-sizing; display; margin; border; padding
 				marginDiv.style.cssText = div.style.cssText =
 					// Support: Firefox<29, Android 2.3
-					// Vendor-prefix box-sizing
-					"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
-					"box-sizing:content-box;display:block;margin:0;border:0;padding:0";
+					// Vendor-prefix akats16-sizing
+					"-webkit-akats16-sizing:content-akats16;-moz-akats16-sizing:content-akats16;" +
+					"akats16-sizing:content-akats16;display:block;margin:0;border:0;padding:0";
 				marginDiv.style.marginRight = marginDiv.style.width = "0";
 				div.style.width = "1px";
 				docElem.appendChild( container );
@@ -5749,13 +5749,13 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 		val = 0;
 
 	for ( ; i < 4; i += 2 ) {
-		// both box models exclude margin, so add it if we want it
+		// both akats16 models exclude margin, so add it if we want it
 		if ( extra === "margin" ) {
 			val += jQuery.css( elem, extra + cssExpand[ i ], true, styles );
 		}
 
 		if ( isBorderBox ) {
-			// border-box includes padding, so remove it if we want content
+			// border-akats16 includes padding, so remove it if we want content
 			if ( extra === "content" ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
@@ -5780,11 +5780,11 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 
 function getWidthOrHeight( elem, name, extra ) {
 
-	// Start with offset property, which is equivalent to the border-box value
+	// Start with offset property, which is equivalent to the border-akats16 value
 	var valueIsBorderBox = true,
 		val = name === "width" ? elem.offsetWidth : elem.offsetHeight,
 		styles = getStyles( elem ),
-		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
+		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-akats16";
 
 	// some non-html elements return undefined for offsetWidth, so check for null/undefined
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
@@ -5810,7 +5810,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		val = parseFloat( val ) || 0;
 	}
 
-	// use the active box-sizing model to add/subtract irrelevant styles
+	// use the active akats16-sizing model to add/subtract irrelevant styles
 	return ( val +
 		augmentWidthOrHeight(
 			elem,
@@ -6028,7 +6028,7 @@ jQuery.each([ "height", "width" ], function( i, name ) {
 					elem,
 					name,
 					extra,
-					jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
+					jQuery.css( elem, "boxSizing", false, styles ) === "border-akats16",
 					styles
 				) : 0
 			);
